@@ -14,6 +14,8 @@ extern int *recursos_disponiveis;
 extern int *matriz_alocados;
 extern int *matriz_necessarios;
 
+int *vetor_processos;
+
 void printSistema() {
     printf("Oi eu sou o sistema!!! \n");
 }
@@ -37,7 +39,27 @@ void processaArgs(int argc, char *argv[]) {
     }
 }
 
+struct processoStruct {
+    int quantidade_recursos;
+    int *recursos_existentes;
+};
+typedef struct processoStruct processoArgsStruct;
+
+processoArgsStruct *processosArgs;
+
 void rotinaSistema(){
+    // Alocação de memória para os processos
+    vetor_processos = malloc(sizeof(pthread_t) * num_processos);
+    // Alocação de memória para os argumentos dos processos
+    processosArgs = (processoArgsStruct*)malloc(sizeof(processoArgsStruct) * num_processos);
+
+    for(int i = 0; i < num_processos; i++){
+        pthread_t vetor_processos[i];
+        processosArgs[i].quantidade_recursos = quantidade_recursos;
+        processosArgs[i].recursos_existentes = recursos_existentes;
+        pthread_create(&vetor_processos[i], NULL, processo, processosArgs);
+    }
+    
     pthread_t thread;
     int flag;
     printf("\nCriando uma thread: ");

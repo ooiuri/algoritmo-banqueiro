@@ -6,5 +6,3 @@ Implementação do algoritmo do banqueiro em C
 ![Banqueiro 3](/assets/banqueiro3.jpeg)
 ![Banqueiro 4](/assets/banqueiro4.jpeg)
 
-Banqueiro -> Sistema
-                Processos
