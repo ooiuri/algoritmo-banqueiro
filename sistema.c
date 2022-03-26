@@ -20,9 +20,9 @@ void printSistema() {
 
 void processaArgs(int argc, char *argv[]) {
 // lógica para captura de parâmetros 
-    printf("processaArgs(): %d \n", argc);
+    // printf("processaArgs(): %d \n", argc);
     for (int i = 0; i < argc; i++){
-        printf("%d parametro: %s\n", i, argv[i]);
+        // printf("%d parametro: %s\n", i, argv[i]);
         if (!strcmp(argv[i],"-n") && argv[i+1]){
             num_processos = atoi(argv[i+1]);
         }
@@ -42,4 +42,11 @@ void rotinaSistema(){
     int flag;
     printf("\nCriando uma thread: ");
     flag = pthread_create(&thread, NULL, processo, NULL);
+    if(flag != 0){
+        printf("\nErro ao criar a thread!\n");
+    }
+    else{
+        printf("\nThread criada com sucesso!\n");
+    }
+    pthread_exit(NULL);
 }

@@ -1,5 +1,5 @@
 #include <stdio.h>
 
-void *processo(void *argumentos) {
-    printf("\nOi eu sou um processo!\n");
+void *processo() {
+    printf("\n\t\tOi eu sou um processo!\n");
 }

@@ -26,7 +26,7 @@ void printHello(){
 
 int main (int argc, char *argv[]) {
     setlocale(LC_ALL, "Portuguese");
-    printf("Algoritmo do Banqueiro! $$$\n");
+    printf("$ Algoritmo do Banqueiro! $\n");
 
     // processa os argumentos de entrada e aloca os vetores de recursos
     quantidade_recursos = argc - 4;
@@ -43,6 +43,7 @@ int main (int argc, char *argv[]) {
     for(int i = 0; i < quantidade_recursos; i++){
         printf(" %d ", recursos_existentes[i]);
     }
+    printf("\n");
 
     printSistema();
     rotinaSistema();
