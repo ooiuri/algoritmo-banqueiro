@@ -17,7 +17,7 @@ extern int **matriz_recursos;
 
 int *vetor_processos;
 
-#define TIME 2
+#define TIME 5
 extern struct processoStruct {
     int pid;
     int quantidade_recursos;
