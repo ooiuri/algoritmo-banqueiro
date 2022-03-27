@@ -5,16 +5,26 @@
 #include "sistema.h"
 #include <pthread.h>
 
+// numero de processos do programa
 int num_processos;
+// quantidade de recursos do vetor
 int quantidade_recursos;
 
+// vetor com a soma dos recursos existentes
 int *recursos_existentes;
+// vetor com a soma dos recursos alocados
 int *recursos_alocados;
+// vetor com os recursos disponíveis
 int *recursos_disponiveis;
 
+
+// matriz que contem os valores dos recursos alocados
 int **matriz_alocados;
+// matriz com os valores dos recursos necessários para cada processo
 int **matriz_necessarios;
+// matriz com os recursos originalmente necessarios para cada processo
 int **matriz_recursos;
+
 // sync mutex
 pthread_mutex_t mutex;
 
@@ -24,10 +34,9 @@ pthread_mutex_t mutex;
  * @ -n <num_processos>
  * @ -a <vetor_recursos>
  **/
-
 int main (int argc, char *argv[]) {
     setlocale(LC_ALL, "Portuguese");
-    printf("$ Algoritmo do Banqueiro! $\n");
+    printf("----$ Algoritmo do Banqueiro! $ ----\n");
 
     // inicia o mutex que sincroniza os processos
     if (pthread_mutex_init(&mutex, NULL) != 0){ 
