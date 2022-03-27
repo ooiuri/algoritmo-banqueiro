@@ -4,5 +4,9 @@
 void printSistema();
 void processaArgs(int argc, char *argv[]);
 void rotinaSistema();
+void calculaRecursosDisponiveis();
+void calculaRecursosAlocados();
+void printMatrizAlocados();
+void printMatrizNecessarios();
 
 #endif // SISTEMA_H_INCLUDED
