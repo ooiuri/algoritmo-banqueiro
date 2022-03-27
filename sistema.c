@@ -8,11 +8,14 @@
 
 extern int num_processos;
 extern int quantidade_recursos;
+
 extern int *recursos_existentes;
 extern int *recursos_alocados;
 extern int *recursos_disponiveis;
+
 extern int **matriz_alocados;
 extern int **matriz_necessarios;
+extern int **matriz_recursos;
 
 int *vetor_processos;
 
@@ -22,9 +25,7 @@ void printSistema() {
 
 void processaArgs(int argc, char *argv[]) {
 // lógica para captura de parâmetros 
-    // printf("processaArgs(): %d \n", argc);
     for (int i = 0; i < argc; i++){
-        // printf("%d parametro: %s\n", i, argv[i]);
         if (!strcmp(argv[i],"-n") && argv[i+1]){
             num_processos = atoi(argv[i+1]);
         }
@@ -95,6 +96,15 @@ void printMatrizNecessarios(){
     }
 }
 
+void printMatrizRecursos(){
+    printf("\n\n\t\tMatriz Recursos:\n");
+    for(int i = 0; i < num_processos; i++){
+        for(int j = 0; j < quantidade_recursos; j++){
+            printf("%d ", matriz_recursos[i][j]);
+        }
+        printf("\n");
+    }
+}
 struct processoStruct {
     int pid;
     int quantidade_recursos;
@@ -103,6 +113,7 @@ struct processoStruct {
 typedef struct processoStruct processoArgsStruct;
 
 processoArgsStruct *processosArgs;
+
 
 void rotinaSistema(){
     // Alocação de memória para os processos

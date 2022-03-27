@@ -8,5 +8,6 @@ void calculaRecursosDisponiveis();
 void calculaRecursosAlocados();
 void printMatrizAlocados();
 void printMatrizNecessarios();
+void printMatrizRecursos();
 
 #endif // SISTEMA_H_INCLUDED
