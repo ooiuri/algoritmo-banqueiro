@@ -16,6 +16,8 @@ extern int **matriz_necessarios;
 extern int **matriz_recursos;
 
 int *vetor_processos;
+
+#define TIME 2
 extern struct processoStruct {
     int pid;
     int quantidade_recursos;
@@ -58,7 +60,7 @@ void *processo(void *argumento) {
             printf("\nProcesso: não consegui recurso!!\n");
         }
 
-        sleep(rand() % 2);
+        sleep(rand() % TIME);
 
         int flagLiberacao = libera_recursos(processoArgs->pid);
         printMatrizNecessarios();
@@ -66,5 +68,6 @@ void *processo(void *argumento) {
             printf("Sou o processo %d e estou finalizando!", processoArgs->pid);
             break;
         }
+        sleep(rand() % TIME);
     }
 }

@@ -18,9 +18,6 @@ int **matriz_recursos;
 // sync mutex
 pthread_mutex_t mutex;
 
-void printHello(){
-    printf("Oi eu sou o banqueiro");
-}
 
 /**
  * Função Principal
