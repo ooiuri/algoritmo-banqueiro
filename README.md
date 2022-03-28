@@ -116,8 +116,8 @@ int **matriz_recursos;
 ## Integrantes:
  - Iuri Everton Reis de Sousa (11811EMT013)
  - Leonardo Guerreiro Nascibem Nava (11811EMT010)
- - Pedro Machado Salles (11811EMT003)?
- - Viviane Malardo 
+ - Pedro Machado Salles (11811EMT003)
+ - Viviane Malardo Ferreira (11821EMT015)
 
 ## BigPicture do projeto
 
