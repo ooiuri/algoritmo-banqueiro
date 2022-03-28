@@ -5,6 +5,13 @@
 #include "sistema.h"
 #include <pthread.h>
 
+// ALGORITMO DO BANQUEIRO
+// ## Integrantes:
+//  - Iuri Everton Reis de Sousa (11811EMT013)
+//  - Leonardo Guerreiro Nascibem Nava (11811EMT010)
+//  - Pedro Machado Salles (11811EMT003)
+//  - Viviane Malardo Ferreira (11821EMT015)
+
 // numero de processos do programa
 int num_processos;
 // quantidade de recursos do vetor
