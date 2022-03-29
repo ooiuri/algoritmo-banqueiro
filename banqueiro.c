@@ -92,7 +92,7 @@ int requisicao_recursos(int pid, int recursos[]) {
     printf("\033[0;32m");
     printf("\nRecebi uma requisição do processo %d, pedindo %d recursos: ", pid, quantidade_recursos);
     for(int i = 0; i < quantidade_recursos; i++){
-        printf("%d ", recursos[i]);
+        printf("%d ", recursos_disponiveis[i]);
     }
     printf("\n");
 
@@ -103,28 +103,33 @@ int requisicao_recursos(int pid, int recursos[]) {
             creditos[i] = 0;
         }
         else {
-            creditos[i] = rand() % recursos_disponiveis[i] + 1;
+            creditos[i] = rand() % (recursos_disponiveis[i]);
         }
         //limita o valor dos creditos com base nas necessidades do processo
         if(creditos[i] > matriz_necessarios[pid][i]){
+            printf("\n\tLimitando o valor dos créditos %d  matriz necessarios: %d", creditos[i], matriz_necessarios[pid][i]);
             creditos[i] = matriz_necessarios[pid][i];
         }
     }
 
+    printf("\n\n Creditos:");
+    for(int i = 0; i < quantidade_recursos; i++){
+        printf(" %d ", creditos[i]);
+    }
     // decide se vai liberar os recursos ou se ele vai entrar em estado inseguro
     // o banqueiro vai liberar os recursos somente se a 
     // matriz_alocados + (recursos_disponiveis - creditos) > matriz_recursos_necessarios 
     // recursos existentes
     // 5 7 9
     // alocados     disponivel      creditos        recursos necessarios
-    // 0 1 3        2 4 6           1 2 3           4 3 5
+    // 0 1 3        2 4 6           1 2 3           4 3 5  
     // nesse caso entra em estado inseguro
-
+    printMatrizNecessarios();
     // flag que indica que o recurso sera liberado
     int flag_libera_recursos = 1;
     for(int i = 0; i < quantidade_recursos; i++){
-        int atende_recursos = matriz_alocados[pid][i] + (recursos_disponiveis[i] - creditos[i]);
-        if(atende_recursos < matriz_necessarios[pid][i]){
+        int atende_recursos = matriz_necessarios[pid][i];// - creditos[i];
+        if(atende_recursos > recursos_disponiveis[i]){
             flag_libera_recursos = 0;
             break;
         }
@@ -136,7 +141,7 @@ int requisicao_recursos(int pid, int recursos[]) {
             matriz_necessarios[pid][i] -= creditos[i];
         }
         printMatrizAlocados();
-        printf("\nLiberei!\n");
+        printf("\n$Banqueiro$: Liberei os recursos!\n");
     }
     else{
         printf("\033[0;33m");
@@ -164,13 +169,14 @@ int libera_recursos(int pid, int recursos[]) {
     }
     
 
-    printf("\n -------- O processo %d vai liberar os recursos!!", pid);
+    printf("\n -------- O processo %d pediu para liberar os recursos!!", pid);
 
     
     for(int i = 0; i < quantidade_recursos; i++){
         matriz_alocados[pid][i] = 0;
     }
-    calculaRecursosDisponiveis();
+    calculaRecursosDisponiveis(0);
+    printMatrizNecessarios();
 
     printf("\n\033[0m");
     pthread_mutex_unlock(&mutex);

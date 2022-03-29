@@ -63,7 +63,7 @@ void *processo(void *argumento) {
         sleep(rand() % TIME);
 
         int flagLiberacao = libera_recursos(processoArgs->pid);
-        printMatrizNecessarios();
+        // printMatrizNecessarios();
         if(flagLiberacao == 1){
             printf("Sou o processo %d e estou finalizando!", processoArgs->pid);
             break;

@@ -50,10 +50,10 @@ void calculaRecursosAlocados() {
     for (int i = 0; i < quantidade_recursos; i++){
         recursos_alocados[i] = cont[i];
     }
-    printf("\n\n\t\tRecursos Alocados:\n");
-    for(int i = 0; i < quantidade_recursos; i++){
-        printf("%d ", recursos_alocados[i]);
-    }
+    // printf("\n\n\t\tRecursos Alocados:\n");
+    // for(int i = 0; i < quantidade_recursos; i++){
+    //     printf("%d ", recursos_alocados[i]);
+    // }
 }
 
 void calculaRecursosDisponiveis(int print){
